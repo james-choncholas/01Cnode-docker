@@ -51,12 +51,12 @@ RUN echo "setting up 01CNode" && \
     git clone http://github.com/KanoczTomas/01Cnode /cnode/01Cnode && \
     cd /cnode/01Cnode && \
     npm install && \
-    npm run build
+    npm run build && \
+    chown -R cnode .
 
 EXPOSE 5000
 
 WORKDIR /cnode/01Cnode
 
-COPY default.yaml /cnode/01Cnode/config/default.yaml
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]

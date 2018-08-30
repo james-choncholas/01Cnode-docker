@@ -11,10 +11,13 @@ if [ "$(sudo docker ps -q -f name=cnode)" ]; then
     docker_clean_ps
 else
     echo "starting 01CNode container"
-    sudo docker run -d \
+    sudo docker run -it \
         --name=cnode \
         -p 5000:5000 \
-        -p 127.0.0.1:8331:8332 \
+        -p 127.0.0.1:8332:8332 \
+        -e RPCHOSTNAME=localhost \
+        -e RPCUSER=btcrpc \
+        -e RPCPASSWORD=lol \
         cnode
 fi
 

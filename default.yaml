@@ -10,7 +10,7 @@ Client:
 RPC:
   host: localhost
   port: 8332
-  rpc_username: btcrpc
+  rpc_username: <some username>
   rpc_password: lol
   concurrency: 100
 
