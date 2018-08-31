@@ -34,7 +34,10 @@ sudo docker run -d \
     -e TXINDEX=1 \
     -e RPCUSER=btcrpc \
     -e RPCPASSWORD=$random_pw \
+    -e MAXCONNECTIONS=10 \
+    -e MAXUPLOADTARGET=1000 \
     -v /mnt/harddrive/bitcoin:/bitcoin \
+    --cpus=1 \
     bitcoind
 
 
@@ -44,7 +47,7 @@ if [ "$(sudo docker ps -q -f name=cnode)" ]; then
     sudo docker rm $(sudo docker ps --filter=status=exited --filter=status=created -q)
 fi
 echo "starting 01CNode container"
-sudo docker run -it \
+sudo docker run -d \
     --name=cnode \
     --network btc-net \
     -p 5000:5000 \
@@ -55,4 +58,4 @@ sudo docker run -it \
 
 
 echo "opening cnode page"
-firefox http://localhost:5000
+firefox http://localhost:5000 &
