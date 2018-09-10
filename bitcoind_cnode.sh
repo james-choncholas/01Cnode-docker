@@ -34,11 +34,11 @@ sudo docker run -d \
     -e TXINDEX=1 \
     -e RPCUSER=btcrpc \
     -e RPCPASSWORD=$random_pw \
-    -e MAXCONNECTIONS=10 \
-    -e MAXUPLOADTARGET=1000 \
+    -e MAXCONNECTIONS=25 \
+    -e MAXUPLOADTARGET=0 \
     -v /mnt/harddrive/bitcoin:/bitcoin \
-    --cpus=1 \
     bitcoind
+    #--cpus=1 \
 
 
 if [ "$(sudo docker ps -q -f name=cnode)" ]; then
