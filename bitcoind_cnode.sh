@@ -1,6 +1,15 @@
 #!/bin/bash
 set -e
 
+# Starts a bitcoind docker container inside a closed docker network.
+# The port bitcoind uses to communicate with other peers is opened
+# but the RPC port is only accessible from inside the network.
+#
+# Then a 01Cnode container (webserver serving statistics about the
+# bitcoind) is started inside the closed docker network so it may
+# access the bitcoind RPC port. It opens port 5000 to serve the
+# statistics. Both containers must be run on the same server.
+
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # Create a random password that does not include crazy characters
