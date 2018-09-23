@@ -10,7 +10,7 @@ random_pw=${random_pw//[^a-zA-Z0-9]/}
 
 
 if [ ! "$(sudo docker network ls | grep btc-net)" ]; then
-  echo "Creating btc-net network ..."
+    echo "Creating btc-net network ..."
     sudo docker network create btc-net
 else
     echo "btc-net network exists."
